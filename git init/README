@@ -1,0 +1,32 @@
+package com.elemental.rmiserver;
+
+import com.elemental.actuator.Actuator;
+import com.elemental.sensor.Sensor;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
+
+/**
+ * @author luis.nascimento
+ */
+public interface ServerInterface extends Remote{
+    void displayMessage(String message) throws RemoteException;
+
+    //Sensor Methods
+    void addSensor(Sensor sensor) throws RemoteException;
+    void updateSensor(Sensor sensor) throws RemoteException;
+    void removeSensor(Sensor sensor) throws RemoteException;
+    List<Sensor> getSensors() throws RemoteException;
+
+    //Actuator Methods
+    void addActuator(Actuator actuator) throws RemoteException;
+    void updateActuator(Actuator actuator) throws RemoteException;
+    List<Actuator> getActuators() throws RemoteException;
+    void removeActuator(Actuator actuator) throws RemoteException;
+
+    //Login Methods
+    boolean validateMonitorLogin(String user, String pass) throws RemoteException;
+
+    Actuator getUpdatedActuator(Actuator actuator) throws RemoteException;
+}
